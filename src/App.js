@@ -4,9 +4,12 @@ import { useState } from 'react'
 
 const App = (props) => {
   const [notes, setNotes] = useState(props.notes)
-  const [newNote, setNewNote] = useState(
-    'a new note...'
-  ) 
+  const [newNote, setNewNote] = useState("") 
+
+  const handleNoteChange = (event) => {
+    console.log(event.target.value)
+    setNewNote(event.target.value)
+  }
 
   const addNote = (event) => {
     event.preventDefault()
@@ -23,7 +26,7 @@ const App = (props) => {
       </ul>
 
       <form onSubmit={addNote}>
-          <input value={newNote} />
+          <input value={newNote} onChange={handleNoteChange} />
         <button type="submit">save</button>
       </form>
     </div>
